@@ -2,7 +2,7 @@
 
 class Order < ApplicationRecord
   validates :identifier, uniqueness: true
-  validates :status, presence: true
+  validates :status, :deposit, presence: true
 
   belongs_to :deposit
 

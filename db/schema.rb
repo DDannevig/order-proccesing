@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_26_001843) do
+ActiveRecord::Schema.define(version: 2024_10_26_005539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -41,5 +41,17 @@ ActiveRecord::Schema.define(version: 2024_10_26_001843) do
     t.index ["identifier"], name: "index_products_on_identifier", unique: true
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.integer "quantity", default: 0, null: false
+    t.bigint "deposit_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deposit_id"], name: "index_stocks_on_deposit_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
+  end
+
   add_foreign_key "orders", "deposits"
+  add_foreign_key "stocks", "deposits"
+  add_foreign_key "stocks", "products"
 end
