@@ -15,5 +15,9 @@ Product.create(name: 'Guacamole 100g', identifier: 'g100')
 Product.create(name: 'Guacamole 200', identifier: 'g200')
 
 # Deposits
-Deposit.create(name: 'V. Maipu')
-Deposit.create(name: 'C. Rodriguez')
+deposit_1 = Deposit.create(name: 'V. Maipu')
+deposit_2 = Deposit.create(name: 'C. Rodriguez')
+
+# Orders
+Order.create(deposit: deposit_1)
+Order.create(deposit: deposit_2)

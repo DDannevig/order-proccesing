@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_25_032817) do
+ActiveRecord::Schema.define(version: 2024_10_26_001843) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "deposits", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.uuid "identifier", default: -> { "gen_random_uuid()" }, null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "order_prepared_at"
+    t.bigint "deposit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deposit_id"], name: "index_orders_on_deposit_id"
+    t.index ["identifier"], name: "index_orders_on_identifier", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -29,4 +41,5 @@ ActiveRecord::Schema.define(version: 2024_10_25_032817) do
     t.index ["identifier"], name: "index_products_on_identifier", unique: true
   end
 
+  add_foreign_key "orders", "deposits"
 end
