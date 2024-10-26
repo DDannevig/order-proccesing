@@ -19,11 +19,22 @@ deposit_1 = Deposit.create(name: 'V. Maipu')
 deposit_2 = Deposit.create(name: 'C. Rodriguez')
 
 # Orders
-Order.create(deposit: deposit_1)
-Order.create(deposit: deposit_2)
+order_1 = Order.create(deposit: deposit_1)
+order_2 = Order.create(deposit: deposit_2)
+order_3 = Order.create(deposit: deposit_1)
 
 # Stock
 Stock.create(deposit: deposit_1, product: product_1)
 Stock.create(deposit: deposit_1, product: product_2, quantity: 100)
 Stock.create(deposit: deposit_2, product: product_3, quantity: 50)
 Stock.create(deposit: deposit_2, product: product_4, quantity: 125)
+Stock.create(deposit: deposit_2, product: product_1, quantity: 30)
+Stock.create(deposit: deposit_2, product: product_2, quantity: 25)
+
+# OrderProducts
+OrderProduct.create(order: order_1, product: product_2, quantity: 5)
+OrderProduct.create(order: order_2, product: product_3, quantity: 9)
+OrderProduct.create(order: order_2, product: product_1, quantity: 1)
+OrderProduct.create(order: order_2, product: product_4, quantity: 2)
+OrderProduct.create(order: order_2, product: product_2, quantity: 6)
+OrderProduct.create(order: order_3, product: product_1, quantity: 2)
