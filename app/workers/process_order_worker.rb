@@ -8,7 +8,7 @@ class ProcessOrderWorker
         stock.update!(quantity: stock.quantity - order_product.quantity)
       end
 
-      order.prepared!
+      order.update!(status: :prepared, order_prepared_at: DateTime.now)
     end
 
     order

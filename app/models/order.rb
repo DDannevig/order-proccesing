@@ -14,10 +14,8 @@ class Order < ApplicationRecord
 
   after_create :reload
 
-  private
-
   def pending_status?
-    return if pending?
+    return if status_was == 'pending'
 
     errors.add(:order_not_pending, I18n.t('models.order.errors.not_pending'))
   end
