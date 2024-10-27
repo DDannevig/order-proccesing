@@ -5,7 +5,7 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :order_products
 
-  enum status: { pending: 0, prepared: 1, fulfilled: 2 }
+  enum status: { pending: 0, prepared: 1 }
 
   validates :identifier, uniqueness: true
   validates :status, :deposit, presence: true
