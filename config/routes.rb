@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :products, param: :identifier
   resources :deposits, only: %i[create index destroy]
-  resources :orders, only: %i[create index]
+  resources :orders, only: %i[create index update]
 end

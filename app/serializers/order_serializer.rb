@@ -1,5 +1,5 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :identifier, :deposit, :products
+  attributes :identifier, :deposit, :status, :products
 
   def deposit
     object.deposit.name

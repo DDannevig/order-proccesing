@@ -14,6 +14,11 @@ class OrdersController < ApplicationController
     render json: order
   end
 
+  def update
+    order = ProcessOrderWorker.perform(params[:id])
+    render json: order
+  end
+
   private
 
   def validate_products_params
