@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ProductsController < ApplicationController
   def show
     render json: Product.find_by(identifier: params[:identifier]), status: :ok

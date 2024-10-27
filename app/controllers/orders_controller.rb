@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OrdersController < ApplicationController
   def index
     render json: Order.all

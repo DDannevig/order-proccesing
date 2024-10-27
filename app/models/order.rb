@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Order < ApplicationRecord
   belongs_to :deposit
   has_many :order_products

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Stock < ApplicationRecord
   validates :quantity, :deposit, :product, presence: true
 

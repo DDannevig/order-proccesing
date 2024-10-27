@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OrderSerializer < ActiveModel::Serializer
   attributes :identifier, :deposit, :products
 
