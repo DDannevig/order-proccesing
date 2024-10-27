@@ -10,5 +10,15 @@ class Order < ApplicationRecord
   validates :identifier, uniqueness: true
   validates :status, :deposit, presence: true
 
+  validate :pending_status?, on: :update
+
   after_create :reload
+
+  private
+
+  def pending_status?
+    return if pending?
+
+    errors.add(:order_not_pending, I18n.t('models.order.errors.not_pending'))
+  end
 end
