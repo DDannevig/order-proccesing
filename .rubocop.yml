@@ -8,3 +8,6 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context']

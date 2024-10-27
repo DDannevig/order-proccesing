@@ -3,4 +3,5 @@ class Deposit < ApplicationRecord
 
   has_many :orders
   has_many :stocks
+  has_many :products, through: :stocks
 end
