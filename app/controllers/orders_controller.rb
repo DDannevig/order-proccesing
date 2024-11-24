@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
 
   DETAILED_ORDERS_QUERY = "SELECT o.identifier, d.name AS deposit, o.status, o.order_prepared_at,
     (json_agg(json_build_object('quantity', op.quantity, 'name', p.name,
-    'stock_quantity', (SELECT s.quantity FROM stocks s
-    WHERE (s.deposit_id = d.id AND s.product_id = p.id))))) as products FROM orders o
+    'stock_quantity', COALESCE((SELECT s.quantity FROM stocks s
+    WHERE (s.deposit_id = d.id AND s.product_id = p.id)), 0)))) as products FROM orders o
     JOIN deposits d ON o.deposit_id = d.id JOIN order_products op ON op.order_id = o.id
     JOIN products p ON p.id = op.product_id
     GROUP BY o.identifier, deposit, o.status, o.order_prepared_at
