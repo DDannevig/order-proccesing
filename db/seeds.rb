@@ -23,6 +23,8 @@ order_1 = Order.create(deposit: deposit_1)
 order_2 = Order.create(deposit: deposit_2)
 order_3 = Order.create(deposit: deposit_1)
 
+FactoryBot.create_list :order, 500
+
 # Stock
 Stock.create(deposit: deposit_1, product: product_1)
 Stock.create(deposit: deposit_1, product: product_2, quantity: 100)
